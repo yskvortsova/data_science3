@@ -209,7 +209,7 @@ Parameter_grid =  {
 To save time on running the paramter tuning on loading, use the determined hyperparameters to run and fit the tuned XGBoost model:
 
 ```python
-Best_XGBoostModel = XGBClassifier(n_estimators = 800, learning_rate = 0.05, max_depth = 10, subsample = 0.8, colsample_bytree = 0.8, n_jobs = -1, random_state = 42)
+Best_XGBoostModel = XGBClassifier(n_estimators = 600, learning_rate = 0.1, max_depth = 6, subsample = 0.8, colsample_bytree = 0.5, n_jobs = -1, random_state = 42, verbose =False)
 Best_XGBoostModel.fit(X_train,y_train)
 Best_XGBoostModel
 ```
