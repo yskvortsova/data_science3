@@ -136,7 +136,7 @@ Parameter_grid =  {
 To save time on running the paramter tuning on loading, use the determined hyperparameters to run and fit the tuned Random Forest model:
 
 ```python
-Best_RandomForest_model = RandomForestClassifier(n_estimators=500, max_depth=None, max_features=0.3, min_samples_leaf=1, n_jobs=-1, verbose=2,random_state=42)
+Best_RandomForest_model = RandomForestClassifier(n_estimators=500, max_depth=30, max_features="sqrt", min_samples_leaf=1, n_jobs=-1, verbose=False, random_state=42)
 Best_RandomForest_model.fit(X_train,y_train)
 Best_RandomForest_model
 ```
