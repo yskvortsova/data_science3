@@ -148,7 +148,7 @@ Best_RandomForest_model = RandomForestClassifier(n_estimators=500, max_depth=30,
 
 Analyse all feature importances.
 
-Determine the top 20 feature importances for the tuned Random Forest model.
+Determine the top feature importances for the tuned Random Forest model.
 
 ```python
 importances = Best_RandomForest_model.feature_importances_
@@ -210,7 +210,7 @@ Best_XGBoostModel = XGBClassifier(n_estimators = 600, learning_rate = 0.1, max_d
 
 Analyse all feature importances.
 
-Determine the top 20 feature importances for the tuned Random Forest model.
+Determine the top feature importances for the tuned Random Forest model.
 
 ```python
 importancesXGB = Best_XGBoostModel.feature_importances_
