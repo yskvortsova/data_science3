@@ -137,8 +137,6 @@ Parameter_grid =  {
 
 ```python
 Best_RandomForest_model = RandomForestClassifier(n_estimators=500, max_depth=30, max_features="sqrt", min_samples_leaf=1, n_jobs=-1, verbose=False, random_state=42)
-Best_RandomForest_model.fit(X_train,y_train)
-Best_RandomForest_model
 ```
 ### 6.4 Evaluate the tuned Random Forest Model
 
@@ -154,8 +152,6 @@ Determine the top 20 feature importances for the tuned Random Forest model.
 
 ```python
 importances = Best_RandomForest_model.feature_importances_
-importances_df = pd.Series(importances, index=X.columns)
-top_20importances = importances_df.sort_values(ascending=False).head(20)
 ```
 
 ## 6.6 Permutation importance analysis - Random Forest Model
@@ -165,8 +161,6 @@ Find out the permutation importance for all features.
 ```python
 result = permutation_importance(Best_RandomForest_model, X_test, y_test, n_repeats=5, random_state=1, n_jobs=-1,scoring="accuracy") 
 importancesPermutation = result.importances_mean 
-importancesPermutation_df = pd.Series(importancesPermutation, index=X.columns)
-importancesPermutation_sort = importancesPermutation_df.sort_values(ascending=False)
 ```
 
 ## 6.7 ROC Curve - Random Forest Model
@@ -177,11 +171,6 @@ Generate an ROC curve and AUC value.
 y_prob_rf = Best_RandomForest_model.predict_proba(X_test)[:, 1] 
 false_positive_rf, true_positive_rf, _ = roc_curve(y_test, y_prob_rf) 
 roc_auc_rf = auc(false_positive_rf, true_positive_rf) 
-
-RocCurveDisplay(fpr=false_positive_rf, 
-                tpr=true_positive_rf, 
-                estimator_name=f"Random Forest (AUC = {roc_auc_rf:.4f})"
-).plot()
 ```
 
 ## 7. Machine Learning Model 2 - XGBoost Model
@@ -206,12 +195,10 @@ Parameter_grid =  {
 
 ### 7.3 Optimised hyperparameters - XGBoost
 
-*To save time on running the paramter tuning on loading again, you can use the determined hyperparameters that were established from the run above to run and fit the tuned Random Forest model:*
+*To save time on running the paramter tuning on loading again, you can use the determined hyperparameters that were established from the run above to run and fit the tuned XGBoost model:*
 
 ```python
 Best_XGBoostModel = XGBClassifier(n_estimators = 600, learning_rate = 0.1, max_depth = 6, subsample = 0.8, colsample_bytree = 0.5, n_jobs = -1, random_state = 42, verbose =False)
-Best_XGBoostModel.fit(X_train,y_train)
-Best_XGBoostModel
 ```
 ### 7.4 Evaluate the tuned XGBoost model
 
@@ -227,8 +214,6 @@ Determine the top 20 feature importances for the tuned Random Forest model.
 
 ```python
 importancesXGB = Best_XGBoostModel.feature_importances_
-importancesXGB_df = pd.Series(importancesXGB, index=X.columns)
-sorted_importancesXGB = importancesXGB_df.sort_values(ascending=False).head(20)
 ```
 
 ## 7.6 Permutation importance analysis - XGBoost model
@@ -238,8 +223,6 @@ Find out the permutation importance for all features.
 ```python
 resultXGBoost = permutation_importance(Best_XGBoostModel, X_test, y_test, n_repeats=5, random_state=1, n_jobs=-1, scoring="accuracy") 
 importancesPermutationXGBoost = resultXGBoost.importances_mean 
-importancesPermutationXGBoost_df = pd.Series(importancesPermutationXGBoost, index=X.columns) 
-importancesPermutationXGBoost_sort = importancesPermutationXGBoost_df.sort_values(ascending=False)
 ```
 
 ## 7.7 ROC Curve - XGBoost model
@@ -250,8 +233,4 @@ Generate an ROC curve and AUC value.
 y_prob_xgb = Best_XGBoostModel.predict_proba(X_test)[:, 1] 
 false_positive_xgb, true_positive_xgb, _ = roc_curve(y_test, y_prob_xgb) 
 roc_auc_xgb = auc(false_positive_xgb, true_positive_xgb) 
-RocCurveDisplay(fpr=false_positive_xgb, 
-                tpr=true_positive_xgb, 
-                estimator_name=f"XGBoost (AUC = {roc_auc_xgb:.4f})"
-).plot()
 ```
