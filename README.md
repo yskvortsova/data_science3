@@ -133,7 +133,7 @@ Parameter_grid =  {
 
 ### 6.3 Optimised hyperparameters - Random Forest 
 
-To save time on running the paramter tuning on loading, use the determined hyperparameters to run and fit the tuned Random Forest model:
+*To save time on running the paramter tuning on loading again, you can use the determined hyperparameters that were established from the run above to run and fit the tuned Random Forest model:*
 
 ```python
 Best_RandomForest_model = RandomForestClassifier(n_estimators=500, max_depth=30, max_features="sqrt", min_samples_leaf=1, n_jobs=-1, verbose=False, random_state=42)
@@ -206,7 +206,7 @@ Parameter_grid =  {
 
 ### 7.3 Optimised hyperparameters - XGBoost
 
-To save time on running the paramter tuning on loading, use the determined hyperparameters to run and fit the tuned XGBoost model:
+*To save time on running the paramter tuning on loading again, you can use the determined hyperparameters that were established from the run above to run and fit the tuned Random Forest model:*
 
 ```python
 Best_XGBoostModel = XGBClassifier(n_estimators = 600, learning_rate = 0.1, max_depth = 6, subsample = 0.8, colsample_bytree = 0.5, n_jobs = -1, random_state = 42, verbose =False)
